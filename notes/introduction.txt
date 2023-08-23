@@ -1,0 +1,79 @@
+Install Django:-
+
+Create virtual environment.
+
+Install Django using pip:
+
+For Windows:
+
+Copy code
+(myworld) C:\Users\Your Name>py -m pip install Django
+
+For Unix/MacOS:
+
+Copy code
+(myworld) ... $ python -m pip install Django
+Check Django Version:
+
+Check installed Django version:
+
+Copy code
+(myworld) C:\Users\Your Name>django-admin --version
+Result example: 4.1.2
+
+My First Project:
+
+Choose a name for your Django project (e.g., my_tennis_club).
+
+Navigate to your desired file system location within the virtual environment.
+
+Run this command in the command prompt to create the project:
+
+Copy code
+django-admin startproject my_tennis_club
+
+The created project folder structure includes:
+
+markdown
+Copy code
+my_tennis_club/
+    manage.py
+    my_tennis_club/
+        __init__.py
+        asgi.py
+        settings.py
+        urls.py
+        wsgi.py
+
+Navigate to the /my_tennis_club folder.
+
+Run the command to start the development server:
+
+Copy code
+py manage.py runserver
+
+Access the project in your browser at http://127.0.0.1:8000/.
+
+You'll see a result like:
+
+sql
+Copy code
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+October 27, 2022 - 13:03:14
+Django version 4.1.2, using settings 'my_tennis_club.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+Open a new browser window and enter http://127.0.0.1:8000 in the address bar.
+
+This summarizes the steps for creating and running your first Django project.
+
+
+
+
