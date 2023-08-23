@@ -1,0 +1,72 @@
+Inserting Data into Django Models:
+
+Adding Records:
+
+Open a Python shell by running:
+
+Copy code
+py manage.py shell
+You'll be in the Python shell environment:
+
+graphql
+Copy code
+Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+Import the Member model:
+
+python
+Copy code
+>>> from members.models import Member
+Check the contents of the Member table:
+
+python
+Copy code
+>>> Member.objects.all()
+This should return an empty QuerySet:
+
+css
+Copy code
+<QuerySet []>
+Add a record to the table:
+
+python
+Copy code
+>>> member = Member(firstname='Emil', lastname='Refsnes')
+>>> member.save()
+Check the table to see if the member was added:
+
+python
+Copy code
+>>> Member.objects.all().values()
+Result:
+
+css
+Copy code
+<QuerySet [{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes'}]>
+Adding Multiple Records:
+
+You can add multiple records using a list of Member objects:
+
+python
+Copy code
+>>> member1 = Member(firstname='Tobias', lastname='Refsnes')
+>>> member2 = Member(firstname='Linus', lastname='Refsnes')
+>>> member3 = Member(firstname='Lene', lastname='Refsnes')
+>>> member4 = Member(firstname='Stale', lastname='Refsnes')
+>>> member5 = Member(firstname='Jane', lastname='Doe')
+>>> members_list = [member1, member2, member3, member4, member5]
+>>> for x in members_list:
+...     x.save()
+Verify that the members were added:
+
+python
+Copy code
+>>> Member.objects.all().values()
+Result:
+
+css
+Copy code
+<QuerySet [{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes'},{'id': 2, 'firstname': 'Tobias', 'lastname': 'Refsnes'},{'id': 3, 'firstname': 'Linus', 'lastname': 'Refsnes'},{'id': 4, 'firstname': 'Lene', 'lastname': 'Refsnes'},{'id': 5, 'firstname': 'Stale', 'lastname': 'Refsnes'},{'id': 6, 'firstname': 'Jane', 'lastname': 'Doe'}]>
+This process demonstrates how to add individual and multiple records to a Django model using the Python shell.
