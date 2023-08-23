@@ -1,0 +1,41 @@
+Updating Data in Django Models:
+
+Updating Records:
+
+Import the Member model:
+
+python
+Copy code
+>>> from members.models import Member
+To update a record, first get the record you want to update. For example, let's update the record at index 4:
+
+python
+Copy code
+>>> x = Member.objects.all()[4]
+Check the current first name of the record:
+
+python
+Copy code
+>>> x.firstname
+Result:
+
+arduino
+Copy code
+'Stale'
+Update the values of the record:
+
+python
+Copy code
+>>> x.firstname = "Stalikken"
+>>> x.save()
+Check if the record was updated:
+
+python
+Copy code
+>>> Member.objects.all().values()
+Result:
+
+css
+Copy code
+<QuerySet [{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes'},{'id': 2, 'firstname': 'Tobias', 'lastname': 'Refsnes'},{'id': 3, 'firstname': 'Linus', 'lastname': 'Refsnes'},{'id': 4, 'firstname': 'Lene', 'lastname': 'Refsnes'},{'id': 5, 'firstname': 'Stalikken', 'lastname': 'Refsnes'},{'id': 6, 'firstname': 'Jane', 'lastname': 'Doe'}]>
+This process demonstrates how to update a record in a Django model using the Python shell.
