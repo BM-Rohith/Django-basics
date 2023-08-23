@@ -1,0 +1,41 @@
+Django Create App:
+
+What is an App?
+
+An app is a web application with a specific purpose in your project, like a homepage, contact form, or database of members.
+
+In this tutorial, we'll create an app to list and register members in a database. But first, let's make a simple Django app that displays "Hello World!".
+
+Create App:
+
+Name the app (e.g., members).
+
+Navigate to your chosen location (e.g., my_tennis_club folder).
+
+Run this command:
+
+Copy code
+py manage.py startapp members
+If the server is running, press [CTRL] [BREAK] or [CTRL] [C] to stop it and return to the virtual environment.
+
+Django creates a "members" folder in your project:
+
+markdown
+Copy code
+my_tennis_club/
+    manage.py
+    my_tennis_club/
+    members/
+        migrations/
+            __init__.py
+        __init__.py
+        admin.py
+        apps.py
+        models.py
+        tests.py
+        views.py
+These files and folders have specific purposes that you'll learn about later.
+
+Take a look at the "views.py" file. This is where we gather information for proper responses.
+
+This gives you a concise understanding of creating a Django app.

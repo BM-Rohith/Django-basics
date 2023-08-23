@@ -1,0 +1,32 @@
+Django Views:
+
+Views:
+
+Django views are Python functions handling HTTP requests and returning HTTP responses, often HTML documents.
+A Django-powered web page consists of various views with distinct tasks and purposes.
+Views are typically stored in a file named views.py within your app's folder.
+Defining a Simple View:
+
+In your my_tennis_club/members/views.py file:
+
+python
+Copy code
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def members(request):
+    return HttpResponse("Hello world!")
+Note:
+
+The view name doesn't have to match the application name; in this case, it's named members.
+This simple example demonstrates sending a response back to the browser.
+Using Views:
+
+To execute the view, it must be accessed through a URL.
+
+Choosing Between HttpResponse and render:
+
+Use HttpResponse to create a basic response with custom content (e.g., plain text, JSON).
+Use render when generating dynamic HTML responses via Django templates and passing data to those templates.
+The choice depends on the view's specific requirements and how you structure the response content.
+This summarizes the key points about Django views and how to create and use them for responding to requests.
