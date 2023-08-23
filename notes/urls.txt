@@ -1,0 +1,57 @@
+Django URLs:
+
+URLs:
+
+Create a file named urls.py in the same folder as the views.py file.
+Define URL patterns for routing using path().
+Specific App URLs (members):
+
+In my_tennis_club/members/urls.py:
+
+python
+Copy code
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('members/', views.members, name='members'),
+]
+Root Directory URLs (my_tennis_club):
+
+In my_tennis_club/my_tennis_club/urls.py:
+
+python
+Copy code
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('', include('members.urls')),
+    path('admin/', admin.site.urls),
+]
+Running the Server and Accessing URLs:
+
+If the server isn't running, navigate to /my_tennis_club and run:
+Copy code
+py manage.py runserver
+In the browser, enter 127.0.0.1:8000/members/ to access the specific URL.
+This summarizes how to set up URLs for routing in Django, connecting views to URLs for different parts of your application.
+
+
+Let me explain what this code does:
+
+from django.urls import path: This imports the path function from django.urls. The path function is used to define URL patterns.
+
+from . import views: This imports the views module from the current package (same directory) using the relative import (.). This is where your members view function is defined.
+
+urlpatterns: This is a list of URL patterns for your application. Each URL pattern is defined using the path function.
+
+path('members/', views.members, name='members'): This line defines a URL pattern that maps the URL /members/ to the members view function from your views module. The name parameter is optional and provides a name for this URL pattern, which can be used to reverse-match the URL in your templates or code.
+
+To make this URL configuration work, you need to include it in your project's main urls.py (located in your project's main directory). This way, the project's URL routing will include the URLs defined in your members/urls.py.
+
+Remember that this URL configuration is specific to the members app. If you have other apps in your project, they will each have their own urls.py file, and you'll need to include their URLs in the main urls.py as well.
+
+
+
+
