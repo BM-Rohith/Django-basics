@@ -1,0 +1,113 @@
+Django Models:
+
+Creating a Model:
+
+A Django model represents a table in the database.
+
+Models allow you to work with data and databases in a dynamic manner.
+
+Defining a Model (Member):
+
+Open models.py in the members app directory.
+
+Define a Member model with fields for first name and last name:
+
+python
+Copy code
+from django.db import models
+
+class Member(models.Model):
+    firstname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+SQLite Database:
+
+The default SQLite database is created in the root folder as db.sqlite3.
+
+Models you define are automatically created as tables in this database.
+
+Migrating the Model:
+
+Run the following command to create a migration for the members app:
+
+Copy code
+py manage.py makemigrations members
+This generates a migration file describing the changes.
+
+Run the migration to create the table in the database:
+
+Copy code
+py manage.py migrate
+This executes the SQL statements to create the table.
+
+Viewing SQL (Optional):
+
+To view the SQL executed in the migration, run:
+
+yaml
+Copy code
+py manage.py sqlmigrate members 0001
+This displays the SQL statements generated.
+
+Result:
+
+Now you have a Member table in your database!
+
+This process demonstrates how to define a Django model, create a migration, and execute it to create a corresponding table in the database.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+from django.db import models: This line imports the necessary module for working with models in Django.
+
+class Member(models.Model):: This line defines a class named Member that inherits from models.Model, indicating that it's a Django model.
+
+firstname = models.CharField(max_length=255): This line defines a field named firstname of type CharField, which is used for storing short to medium-length text. The max_length argument specifies the maximum length of the text (255 characters in this case).
+
+lastname = models.CharField(max_length=255): Similarly, this line defines a lastname field of type CharField.
+
+With these lines of code, you've created a model called Member with two fields: firstname and lastname. This model will be used to create a corresponding database table that can store data about members, where each row represents a member with their first and last names.
+
+After defining your model, you can use Django's migration system to create the corresponding database table and perform any necessary updates to the database schema as your model evolves. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The py manage.py makemigrations members command is used to create database migration files for the changes you've made to the members app's models. When you define or modify models in Django, you need to create migration files that capture those changes. These migration files contain the instructions for how to modify the database schema to match your updated models.
+
+By running this command, Django analyzes the changes you've made in your members app's models and generates migration files accordingly. These migration files will be stored in the members/migrations/ directory of your app.
+
+Here's how you might use the command:
+
+bash
+Copy code
+py manage.py makemigrations members
+After running this command, Django will create migration files that capture the changes you've made to the members app's models. You will see output indicating which migration files were created.
+
+Remember that while makemigrations prepares migration files, you'll need to run py manage.py migrate to apply those changes to your actual database schema. This command executes the migrations and updates the database accordingly.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The migration file 0001_initial.py that Django generated for your members app is located in the /members/migrations/ folder. This migration file contains a Python script that describes the changes you've made to your database schema, specifically the creation of the Member model.
+
+Here's a breakdown of what's inside the migration file:
+
+Migration Class: This class is a subclass of migrations.Migration. It represents the migration itself and holds various metadata about it, such as dependencies and operations.
+
+initial Attribute: This attribute indicates that this is the initial migration for the app.
+
+dependencies Attribute: This attribute lists the dependencies of the migration. Since this is the initial migration, it has no dependencies.
+
+operations Attribute: This attribute contains a list of operations that need to be performed during the migration. In this case, there's a single operation: migrations.CreateModel(...). This operation specifies the creation of the Member model and defines its fields.
+
+By running the makemigrations command, Django generated this migration file based on the changes you made to your models.py file. The migration file provides a record of these changes and serves as a blueprint for updating the database schema when you run the migrate command.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
