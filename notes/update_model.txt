@@ -1,0 +1,67 @@
+Updating a Django Model:
+
+Adding Fields to the Model:
+
+Open the models.py file in your members app folder.
+
+python
+Copy code
+my_tennis_club/members/models.py
+Add new fields to the Member model. For example, let's add phone and joined_date fields:
+
+python
+Copy code
+from django.db import models
+
+class Member(models.Model):
+    firstname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    phone = models.IntegerField(null=True)
+    joined_date = models.DateField(null=True)
+Run the migration to update the database schema:
+
+Copy code
+py manage.py makemigrations members
+If prompted, choose the option to allow NULL values for the new fields.
+
+Run the migration:
+
+Copy code
+py manage.py migrate
+Inserting Data to the New Fields:
+
+Start the Python shell:
+
+Copy code
+py manage.py shell
+Import the Member model:
+
+python
+Copy code
+>>> from members.models import Member
+Get a record from the Member model (e.g., the first record):
+
+python
+Copy code
+>>> x = Member.objects.all()[0]
+Update the new fields for the record (e.g., set phone and joined_date):
+
+python
+Copy code
+>>> x.phone = 5551234
+>>> x.joined_date = '2022-01-05'
+>>> x.save()
+Check if the changes were applied:
+
+python
+Copy code
+>>> Member.objects.all().values()
+Result:
+
+python
+Copy code
+<QuerySet [
+{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes', 'phone': 5551234, 'joined_date': datetime.date(2022, 1, 5)},
+...
+]>
+This process demonstrates how to add new fields to a Django model and update the data in those fields using the Python shell.
