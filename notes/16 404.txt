@@ -1,0 +1,41 @@
+Customizing the Django 404 (Page Not Found) Error Page:
+
+When you try to access a page that doesn't exist in your Django project, you may encounter a 404 error. Django provides a way to customize the appearance of the 404 error page.
+
+Step 1: Check the Default 404 Error Page:
+
+In your web browser, type 127.0.0.1:8000/some_nonexistent_page/ in the address bar.
+
+You will see the default built-in Django 404 error page.
+
+Step 2: Customize the 404 Error Page:
+
+Create a file named 404.html in the /templates/ folder of your members app:
+
+html
+Copy code
+my_tennis_club/members/templates/404.html
+Add your custom HTML content to the 404.html file:
+
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<title>Page Not Found</title>
+<body>
+
+<h1>Oops!</h1>
+
+<h2>I couldn't find the page you're looking for.</h2>
+
+</body>
+</html>
+This content will be displayed when a 404 error occurs.
+
+Step 3: Test the Custom 404 Error Page:
+
+In your web browser, type 127.0.0.1:8000/some_nonexistent_page/ in the address bar again.
+
+You should now see your custom 404 error page with the content you added.
+
+Note: The steps provided here are for demonstration purposes on your local development server. In a production environment, you might want to provide more detailed error information for debugging purposes, and you should consider implementing a more user-friendly error page for your users.
