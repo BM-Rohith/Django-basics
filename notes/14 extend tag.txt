@@ -1,0 +1,79 @@
+Using the {% extends %} Tag in Django Templates:
+
+Create the Master Template:
+
+Create a new HTML file named master.html and place it in the /templates/ folder of your members app:
+
+html
+Copy code
+my_tennis_club/members/templates/master.html
+Add the following content to master.html:
+
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+Note: The {% block %} tags define blocks that can be overridden in child templates.
+
+Modify Templates to Use the Master Template:
+
+Modify the all_members.html template to extend the master.html template:
+
+html
+Copy code
+{% extends "master.html" %}
+
+{% block title %}
+  My Tennis Club - List of all members
+{% endblock %}
+
+{% block content %}
+  <h1>Members</h1>
+  
+  <ul>
+    {% for x in mymembers %}
+      <li><a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+This tells Django to use master.html as the parent template and populate the {% block title %} and {% block content %} blocks.
+
+Modify the details.html template in a similar way:
+
+html
+Copy code
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ mymember.firstname }} {{ mymember.lastname }}
+{% endblock %}
+
+{% block content %}
+  <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+  
+  <p>Phone {{ mymember.phone }}</p>
+  <p>Member since: {{ mymember.joined_date }}</p>
+  
+  <p>Back to <a href="/members">Members</a></p>
+{% endblock %}
+These templates now extend the master.html template and fill in the content of the {% block title %} and {% block content %} blocks.
+
+View the Result:
+
+Start the server by navigating to the /my_tennis_club/ folder and executing this command:
+
+Copy code
+py manage.py runserver
+In your web browser, type 127.0.0.1:8000/members/ in the address bar.
+
+You should see the list of members and clicking on a member's name should take you to the details page, both using the master.html template as the base layout.

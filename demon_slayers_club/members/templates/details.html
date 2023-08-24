@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% extends "master.html" %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,4 +15,36 @@
     <p>Back to <a href="/members" style="color: greenyellow;">Members</a></p>
 
 </body>
-</html>
+</html> -->
+
+
+
+{% block title %}
+  <h1> DETAILS ABOUT <span style="background-color: red; color: aliceblue;">{{ mymember.firstname }} {{ mymember.lastname }}</span></h1>
+{% endblock %}
+
+{% block content %}
+  <h1 style="background-color: red; color: aliceblue;">{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+
+  <p>Phone: {{ mymember.phone }}</p>
+  <p>Member since: {{ mymember.joined_date  }}</p>
+
+  <p>Back to <a href="/members" style="color: blue;">Member</a></p>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
